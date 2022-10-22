@@ -58,6 +58,7 @@
 # august har  [-] CVE-2022-34303 - 0.0 - CERT/CC: CVE-20220-34303 Crypto Pro Boot Loader Bypass
 # Create a webhook function
 # Create arg to retrieve EEPS for the CVEs - could be fun for historical lookups (i.e. which of the CVEs 3 months ago are badness?)
+# Iterate through all vulns to be printed to find the correct colwidth.
 #       done    parser grab current month
 #       done    Create check to ensure we have a match between our count and the number of vulns in the returned json.
 #       done    Create function for RCE
@@ -275,8 +276,8 @@ if __name__ == "__main__":
     else:
         print("[+] Print current months Patch Tuesday stats.")
         # Use manual month list as datetimes month abbreviation is based on running systems locale
-        list_months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"]
-        current_month = list_months[datetime.now().month-2]
+        list_months = ["Bogus-place-holder","jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"]
+        current_month = list_months[datetime.now().month] 
         date_to_fetch = str(datetime.now().year) + "-" + current_month
         
 
@@ -284,6 +285,7 @@ if __name__ == "__main__":
     get_sec_release = requests.get(f'{base_url}cvrf/{date_to_fetch}', headers=headers)
     if get_sec_release.status_code != 200:
         print(f"[!] Thats a {get_sec_release.status_code} from MS no release notes yet")
+        print(f"[!] {base_url}cvrf/{date_to_fetch}")
         exit()
 
     release_json = get_sec_release.json()
