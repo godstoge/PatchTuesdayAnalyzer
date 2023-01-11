@@ -53,6 +53,16 @@
 '''
 
 # TODO
+# Script sjekk om CVE-nummer starter med ADV (Januar har 93 vuln mot 118 linjer). Noen er oppdatert, så annen release date, men oppdatering januar. 
+# List out FAQs - Kanskje få ut alle FAQer - Det er jo som regel der det linkes til ADV og KB. Evt. gjøre sjekker på FAQer som ikke har boiler plate shit (Filtering by exemption) examples
+    #"Are there additional steps that I need to take to be protected from this vulnerability?"
+    #"How do I protect myself from this vulnerability?"
+    # "Are any additional steps required to protect my SharePoint farm after installing the January 10, 2023 security update for SharePoint Server?"
+    #  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21531
+    # - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41099
+    #  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21743
+# Ta ut Security Feature Bypass Vulnerabilitys på lik linje med RCE, EoP, osv - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21759 - Var 4 i januar
+# Kanskje lage en oneliner oversikt med ekstras  CVE - CVSS - Text - Calc - Exploitability (Public, Exploited, Likelyhood) - FAQ that's not boiler plate
 # Sort out highest CVSSseses by CVSS score
 # --date 2022-jun has an unknown vuln
 # august har  [-] CVE-2022-34303 - 0.0 - CERT/CC: CVE-20220-34303 Crypto Pro Boot Loader Bypass
@@ -362,7 +372,7 @@ if __name__ == "__main__":
 
 # Print Highest rated vulns 
 
-    print('[+] Highest Rated Vulnerabilities')
+    print('[+] Highest Rated Vulnerabilities (i.e. 8.0 and above)')
     list_hrv = list_highest_rated_vulns(all_vulns,8.0)
    
     if cliargs.links ==1: 
