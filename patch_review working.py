@@ -338,7 +338,7 @@ def insert_table_with_links(provided_cves):
 
 def getReleaseNotes(date):
     # Get the list of all vulns and return a dict
-    base_url = 'https://api.msrc.microsoft.com/cvrf/v3.0/'
+    base_url = 'https://api.msrc.microsoft.com/cvrf/v2.0/'
     get_sec_release = requests.get(f'{base_url}cvrf/{date}', headers=headers)
     if get_sec_release.status_code != 200:
         print(f"[!] Thats a {get_sec_release.status_code} from MS no release notes yet")
